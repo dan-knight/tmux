@@ -10,7 +10,8 @@ $(TMUX_CONF):
 	@echo "" >> $(TMUX_CONF)
 	
 	@for file in $(CONF_FILES); do \
-		echo "source-file $$file" >> $(TMUX_CONF); \
+		abs_path=$$(realpath $$file); \
+		echo "source-file $$abs_path" >> $(TMUX_CONF); \
 	done
 
 	@echo "" >> $(TMUX_CONF)
