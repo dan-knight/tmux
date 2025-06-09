@@ -1,7 +1,7 @@
 TMUX_CONF := tmux.conf
 CONF_FILES := $(filter-out $(TMUX_CONF), $(wildcard *.conf))
 
-.PHONY: all
+.PHONY: all clean
 
 all: $(TMUX_CONF)
 
@@ -12,3 +12,6 @@ $(TMUX_CONF):
 	@for file in $(CONF_FILES); do \
 		echo "source-file $$file" >> $(TMUX_CONF); \
 	done
+
+clean:
+	@rm -f $(TMUX_CONF)
