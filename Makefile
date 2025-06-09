@@ -1,9 +1,11 @@
 TMUX_CONF := tmux.conf
+LINKED_CONF := ~/.tmux.conf
 CONF_FILES := $(filter-out $(TMUX_CONF), $(wildcard *.conf))
 
 .PHONY: all clean
 
 all: $(TMUX_CONF)
+	@ln -sf $(abspath $(TMUX_CONF)) $(LINKED_CONF)
 
 $(TMUX_CONF):
 	@echo "# Auto-generated tmux configuration. Do not edit by hand." > $(TMUX_CONF)
@@ -19,3 +21,4 @@ $(TMUX_CONF):
 
 clean:
 	@rm -f $(TMUX_CONF)
+	@rm -f $(LINKED_CONF)
