@@ -1,6 +1,6 @@
 TMUX_CONF := tmux.conf
 LINKED_CONF := ~/.tmux.conf
-CONF_FILES := $(filter-out $(TMUX_CONF), $(wildcard *.conf))
+CONF_FILES := $(wildcard config/*.conf)
 
 .PHONY: all clean
 
