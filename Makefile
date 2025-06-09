@@ -13,5 +13,8 @@ $(TMUX_CONF):
 		echo "source-file $$file" >> $(TMUX_CONF); \
 	done
 
+	@echo "" >> $(TMUX_CONF)
+	@echo "bind r source-file ~/.tmux.conf \; display-message 'Reoaded tmux config'" >> $(TMUX_CONF)
+
 clean:
 	@rm -f $(TMUX_CONF)
